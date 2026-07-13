@@ -1,0 +1,426 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Notes Template
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Better page margins
+\usepackage[margin=1in]{geometry}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+% Better fonts
+\usepackage[T1]{fontenc}
+\usepackage{mlmodern}
+
+% Graphics support
+\usepackage{graphicx}
+
+% Better tables
+\usepackage{booktabs}
+
+% Hyperlinks (clickable table of contents)
+% Keep this near the end of package imports.
+\usepackage[
+		colorlinks=true,
+		linkcolor=blue
+]{hyperref}
+
+% Footer customization
+\usepackage{fancyhdr}
+
+% Gives the total number of pages
+\usepackage{lastpage}
+
+% Better spacing
+\usepackage{setspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%              DOCUMENT INFORMATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\StudentName}{Adrien GUEGUEN}
+\newcommand{\University}{La Rochelle Université}
+\newcommand{\Course}{Master MIX}
+\newcommand{\Subject}{MATIERE}
+\newcommand{\Semester}{DATE/SEMESTRE}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                     MATH SHORTCUTS
+%
+% This section defines custom commands for common mathematical
+% notation. Instead of repeatedly writing long LaTeX commands,
+% you can use shorter commands.
+%
+% Example:
+%   Instead of: \mathbb{R}
+%   Write:      \R
+%
+% Remove anything you don't use.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 NUMBER SETS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Real numbers
+\newcommand{\R}{\mathbb{R}}
+
+% Complex numbers
+\newcommand{\C}{\mathbb{C}}
+
+% Natural numbers
+\newcommand{\N}{\mathbb{N}}
+
+% Integers
+\newcommand{\Z}{\mathbb{Z}}
+
+% Rational numbers
+\newcommand{\Q}{\mathbb{Q}}
+
+% Prime numbers
+\newcommand{\Pp}{\mathbb{P}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 LINEAR ALGEBRA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Transpose
+% Usage: A^\top
+\newcommand{\trans}{^\top}
+
+% Rank of a matrix
+\newcommand{\rank}{\operatorname{rank}}
+
+% Kernel/null space
+\newcommand{\kernel}{\operatorname{ker}}
+
+% Image/column space
+\newcommand{\image}{\operatorname{im}}
+
+% Trace
+\newcommand{\trace}{\operatorname{tr}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 CALCULUS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Differential operator
+% Usage: \dd x
+% Produces: dx with proper spacing
+\newcommand{\dd}{\,\mathrm{d}}
+
+% Partial derivative
+% Usage:
+% \pdv{f}{x}
+% gives ∂f/∂x
+\newcommand{\pdv}[2]{\frac{\partial #1}{\partial #2}}
+
+% Gradient
+\newcommand{\grad}{\nabla}
+
+% Laplacian
+\newcommand{\laplace}{\Delta}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 ALGEBRA / ANALYSIS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Absolute value
+% Usage: \abs{x}
+\newcommand{\abs}[1]{\left|#1\right|}
+
+% Norm
+% Usage: \norm{x}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+
+% Inner product
+% Usage: \inner{x}{y}
+\newcommand{\inner}[2]{\left\langle #1,#2 \right\rangle}
+
+% Floor function
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+
+% Ceiling function
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+
+% Function notation
+% Usage:
+% \func{f}{x}
+% gives f(x)
+\newcommand{\func}[2]{#1(#2)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 SET THEORY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Set builder notation
+% Usage:
+% \set{x \in \R}
+% gives {x ∈ R}
+\newcommand{\set}[1]{\left\{#1\right\}}
+
+% Empty set
+\newcommand{\emptysetc}{\varnothing}
+
+% Cardinality
+% Usage: \card(A)
+\newcommand{\card}[1]{\left|#1\right|}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 LOGIC
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Logical operators
+
+\newcommand{\AND}{\land}
+\newcommand{\OR}{\lor}
+\newcommand{\NOT}{\neg}
+
+% Implies
+\newcommand{\impl}{\Rightarrow}
+
+% Equivalent
+\newcommand{\iffc}{\Leftrightarrow}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 PROBABILITY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Probability
+% Usage: \Prob(A)
+\newcommand{\Prob}{\mathbb{P}}
+
+% Expectation
+% Usage: \E[X]
+\newcommand{\E}{\mathbb{E}}
+
+% Variance
+% Usage: \Var(X)
+\newcommand{\Var}{\operatorname{Var}}
+
+% Covariance
+\newcommand{\Cov}{\operatorname{Cov}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 DELIMITERS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Automatic parentheses
+% Usage: \paren{x+y}
+\newcommand{\paren}[1]{\left(#1\right)}
+
+% Automatic brackets
+\newcommand{\bracket}[1]{\left[#1\right]}
+
+% Automatic braces
+\newcommand{\bracec}[1]{\left\{#1\right\}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 CALCULUS SYMBOLS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Common limits
+% Usage:
+% \limto{x}{0}
+% gives lim_{x -> 0}
+\newcommand{\limto}[2]{\lim_{#1\to #2}}
+
+% Integral with nice spacing
+% Usage:
+% \intab{0}{1}{f(x)}
+% gives integral from 0 to 1
+\newcommand{\intab}[3]{\int_{#1}^{#2} #3 \,\dd x}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 THEOREM SHORTCUTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Useful when writing proofs
+
+% "such that"
+\newcommand{\st}{\text{ such that }}
+
+% "there exists"
+\newcommand{\existsc}{\exists}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%              HEADER / FOOTER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{fancy}
+
+% Remove the default header/footer
+\fancyhf{}
+
+% Footer:
+% Left = your name
+% Center = page X of Y
+% Right = course
+\fancyfoot[L]{\StudentName}
+\fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
+\fancyfoot[R]{\Course: \Subject}
+
+% Removes the decorative line at the top
+\renewcommand{\headrulewidth}{0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%          THEOREM ENVIRONMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% These create environments like:
+%
+% \begin{theorem}
+% ...
+% \end{theorem}
+%
+% They automatically number themselves.
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+% Definition style (upright text instead of italic)
+
+\theoremstyle{definition}
+
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+
+% Notes style
+
+\theoremstyle{remark}
+
+\newtheorem*{remark}{Remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         IMPORTANT RESULT BOX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newdimen\boxfigwidth
+
+\newenvironment{bigbox}
+{
+		\begingroup
+		\boxfigwidth=\hsize
+		\advance\boxfigwidth by -10\fboxrule
+		\advance\boxfigwidth by -10\fboxsep
+		\setbox4=\vbox\bgroup
+		\hsize\boxfigwidth
+		\hrule height0pt width\boxfigwidth
+		\smallskip
+		\linewidth=\boxfigwidth
+}
+{
+		\smallskip
+		\egroup
+		\fbox{\box4}
+		\endgroup
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                DOCUMENT START
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                    TITLE PAGE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+
+		{\Huge \textbf{\Subject}}
+
+		\vspace{1cm}
+
+		\begin{tabular}{rl}
+				\textbf{Name:} & \StudentName\\[0.3cm]
+				\textbf{University:} & \University\\[0.3cm]
+				\textbf{Course:} & \Course\\[0.3cm]
+				\textbf{Semester:} & \Semester
+		\end{tabular}
+
+\end{center}
+
+\vspace{1cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IMPORTANT INFORMATION BOX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{bigbox}
+		\centering
+		\Large
+		\textbf{Course Notes}
+
+		\vspace{0.5cm}
+
+		Small description of the contents of these notes
+
+\end{bigbox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TABLE OF CONTENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% This is generated automatically.
+% Compile the document twice for it to appear correctly.
+
+\tableofcontents
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EXAMPLE SECTION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Partie 1}
+
+Write notes here.
+
+\subsection{Definitions}
+
+\begin{definition}
+		definition
+\end{definition}
+
+\subsection{Theorems}
+
+\begin{theorem}
+		State your theorem here.
+\end{theorem}
+
+\begin{proof}
+		Write the proof here.
+\end{proof}
+
+\subsection{Examples}
+
+\begin{example}
+		Work through an example here.
+\end{example}
+
+\section{Partie 2}
+
+Write notes here.
+
+\begin{bigbox}
+		\centering
+		\Large
+		Important Formula
+		\[
+				e^{i\theta}=\cos\theta+i\sin\theta
+		\]
+\end{bigbox}
+
+\end{document}
